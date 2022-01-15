@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,9 @@
 		0210C0B827914EE700A7B4AE /* TastyLoadIDUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0210C0B727914EE700A7B4AE /* TastyLoadIDUTests.swift */; };
 		0210C0C227914EE700A7B4AE /* TastyLoadIDUUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0210C0C127914EE700A7B4AE /* TastyLoadIDUUITests.swift */; };
 		0210C0C427914EE700A7B4AE /* TastyLoadIDUUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0210C0C327914EE700A7B4AE /* TastyLoadIDUUITestsLaunchTests.swift */; };
+		024C3E2C2792B68900B43CEA /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024C3E2B2792B68900B43CEA /* MenuCollectionViewCell.swift */; };
+		024C3E2E2792B7BF00B43CEA /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024C3E2D2792B7BF00B43CEA /* Menu.swift */; };
+		02AC1B772791E0F600695AE3 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AC1B762791E0F600695AE3 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		0210C0BD27914EE700A7B4AE /* TastyLoadIDUUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TastyLoadIDUUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0210C0C127914EE700A7B4AE /* TastyLoadIDUUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyLoadIDUUITests.swift; sourceTree = "<group>"; };
 		0210C0C327914EE700A7B4AE /* TastyLoadIDUUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyLoadIDUUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		024C3E2B2792B68900B43CEA /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		024C3E2D2792B7BF00B43CEA /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		02AC1B762791E0F600695AE3 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,9 @@
 				0210C0AB27914EE700A7B4AE /* LaunchScreen.storyboard */,
 				0210C0AE27914EE700A7B4AE /* Info.plist */,
 				0210C0A627914EE600A7B4AE /* TastyLoadIDU.xcdatamodeld */,
+				02AC1B762791E0F600695AE3 /* DetailView.swift */,
+				024C3E2B2792B68900B43CEA /* MenuCollectionViewCell.swift */,
+				024C3E2D2792B7BF00B43CEA /* Menu.swift */,
 			);
 			path = TastyLoadIDU;
 			sourceTree = "<group>";
@@ -210,7 +219,7 @@
 				};
 			};
 			buildConfigurationList = 0210C09527914EE600A7B4AE /* Build configuration list for PBXProject "TastyLoadIDU" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -263,8 +272,11 @@
 			files = (
 				0210C0A827914EE600A7B4AE /* TastyLoadIDU.xcdatamodeld in Sources */,
 				0210C0A227914EE600A7B4AE /* ViewController.swift in Sources */,
+				024C3E2E2792B7BF00B43CEA /* Menu.swift in Sources */,
 				0210C09E27914EE600A7B4AE /* AppDelegate.swift in Sources */,
+				02AC1B772791E0F600695AE3 /* DetailView.swift in Sources */,
 				0210C0A027914EE600A7B4AE /* SceneDelegate.swift in Sources */,
+				024C3E2C2792B68900B43CEA /* MenuCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
