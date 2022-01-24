@@ -7,11 +7,10 @@
 
 import UIKit
 
-class DetailView: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+class DetailView: UIViewController{
     
     
-    
-
+    //MARK: - Info Property
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var foodTypeLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -19,42 +18,58 @@ class DetailView: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     @IBOutlet weak var tellLabel: UILabel!
     @IBOutlet weak var tellButton: UIButton!
     @IBOutlet weak var mainImageView: UIImageView!
-    
-    @IBOutlet weak var collectionView: UICollectionView!
-    
-    
-    
+    @IBOutlet weak var mainLabel: UILabel!
     var textToSet: String?
     var imageToSet: UIImage?
     var tell: Int = 0
     var type: Int = 0
     
-    let numberOfCell: Int = 4
-    let cellIdentifier = "cell"
+    //MARK: - collectionView Property
+    @IBOutlet weak var collectionView: UICollectionView!
+    var menus =  Menu.fetchMenu1()
     
-    var mainTitle: [String] = [String]()
-    var mainPrice: [String] = [String]()
-
-    var mainImage: [String] = [String]()
-
+    //MARK: - Memos
+    @IBOutlet weak var MyCommentTextFiled: UITextField!
+    
+    var memo1: String = ""
+    var memo2: String = ""
+    var memo3: String = ""
+    var memo4: String = ""
+    var memo5: String = ""
+    var memo6: String = ""
+    var memo7: String = ""
+    var memo8: String = ""
+    var memo9: String = ""
+    var memo10: String = ""
     
     
+    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
-    
-        
+      
         detailInfo()
-        typeInstinct()
+        labelBorder()
+        takeValue()
+        self.collectionView.dataSource = self
+        
+        navigationItem.title = textToSet
+        showMemo()
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         titleLabel.text = self.textToSet
         mainImageView.image = self.imageToSet
+        
+    }
+    
+    func labelBorder() {
+        mainLabel.layer.borderColor = UIColor.black.cgColor
+        mainLabel.layer.borderWidth = 2
         
     }
     
@@ -69,14 +84,14 @@ class DetailView: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             type = 1
         case "민들레 초밥":
             foodTypeLabel.text = "초밥"
-            addressLabel.text = "서울 노원구 초안산로2길 109 1층"
+            addressLabel.text = "서울 노원구 초안산로 2길 109 1층"
             timeLabel.text = "-"
             tellLabel.text = "tel 0507-1438-8286"
             tell = 050714388286
             type = 2
         case "밥은화":
             foodTypeLabel.text = "덮밥"
-            addressLabel.text = "서울 노원구 초안산로 2길 123 1층"
+            addressLabel.text = "서울 노원구 초안산로2길 123 1층"
             timeLabel.text = "토요일 휴무"
             tellLabel.text = "tel 02-902-2822"
             tell = 029022822
@@ -123,46 +138,21 @@ class DetailView: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             tellLabel.text = "tel 0507-1337-5940"
             tell = 050713375940
             type = 9
-        case "":
-            foodTypeLabel.text = ""
-            addressLabel.text = ""
-            timeLabel.text = ""
-            tellLabel.text = ""
+        case "보배반점":
+            foodTypeLabel.text = "중식"
+            addressLabel.text = "서울 노원구 초안산로5길 12 월계프라자"
+            timeLabel.text = "11:00 시작"
+            tellLabel.text = "02-990-8319"
+            tell = 029908319
+            type = 10
         default:
             return
         }
         
     }
-    func typeInstinct() {
-        switch type {
-            case 1:
-                mainTitle = ["등심하다","안심하다","카레우동","카레하다"]
-                mainPrice = ["9,000원","10,000원","8,500원","8,500원"]
-                mainImage = []
-            case 2:
-                mainTitle = []
-                mainPrice = []
-                mainImage = []
-            case 3:
-                mainTitle = []
-                mainPrice = []
-                mainImage = []
-            case 4:
-                mainTitle = []
-                mainPrice = []
-                mainImage = []
-            case 5:
-                mainTitle = []
-                mainPrice = []
-                mainImage = []
-            default:
-                return
-                
-            }
-        
-    }
     
-    //MARK:- 전화거는 버튼
+    
+    //MARK: - 전화거는 버튼
   
     @IBAction func callButton(_ sender: Any) {
         let number:Int = tell
@@ -180,26 +170,131 @@ class DetailView: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     }
     
     
-    // collectionView
+    //MARK: - MYmemo
+    func showMemo() {
+        switch type{
+        case 1:
+            MyCommentTextFiled.text = UserDefaults.standard.string(forKey: "memo1")
+        case 2:
+            MyCommentTextFiled.text = UserDefaults.standard.string(forKey: "memo2")
+        case 3:
+            MyCommentTextFiled.text = UserDefaults.standard.string(forKey: "memo3")
+        case 4:
+            MyCommentTextFiled.text = UserDefaults.standard.string(forKey: "memo4")
+        case 5:
+            MyCommentTextFiled.text = UserDefaults.standard.string(forKey: "memo5")
+        case 6:
+            MyCommentTextFiled.text = UserDefaults.standard.string(forKey: "memo6")
+        case 7:
+            MyCommentTextFiled.text = UserDefaults.standard.string(forKey: "memo7")
+        case 8:
+            MyCommentTextFiled.text = UserDefaults.standard.string(forKey: "memo8")
+        case 9:
+            MyCommentTextFiled.text = UserDefaults.standard.string(forKey: "memo9")
+        case 10:
+            MyCommentTextFiled.text = UserDefaults.standard.string(forKey: "memo10")
+        default:
+            return MyCommentTextFiled.text = ""
+        }
+        
+    }
+    
+    @IBAction func saveComment(_ sender: UIButton) {
+        switch type{
+        case 1:
+            memo1 = MyCommentTextFiled.text ?? ""
+            UserDefaults.standard.set(memo1, forKey: "memo1")
+        case 2:
+            memo2 = MyCommentTextFiled.text ?? ""
+            UserDefaults.standard.set(memo2, forKey: "memo2")
+        case 3:
+            memo3 = MyCommentTextFiled.text ?? ""
+            UserDefaults.standard.set(memo3, forKey: "memo3")
+        case 4:
+            memo4 = MyCommentTextFiled.text ?? ""
+            UserDefaults.standard.set(memo4, forKey: "memo4")
+        case 5:
+            memo5 = MyCommentTextFiled.text ?? ""
+            UserDefaults.standard.set(memo5, forKey: "memo5")
+        case 6:
+            memo6 = MyCommentTextFiled.text ?? ""
+            UserDefaults.standard.set(memo6, forKey: "memo6")
+        case 7:
+            memo7 = MyCommentTextFiled.text ?? ""
+            UserDefaults.standard.set(memo7, forKey: "memo7")
+        case 8:
+            memo8 = MyCommentTextFiled.text ?? ""
+            UserDefaults.standard.set(memo8, forKey: "memo8")
+        case 9:
+            memo9 = MyCommentTextFiled.text ?? ""
+            UserDefaults.standard.set(memo9, forKey: "memo9")
+        case 10:
+            memo10 = MyCommentTextFiled.text ?? ""
+            UserDefaults.standard.set(memo10, forKey: "memo10")
+        default :
+            return
+        }
+    }
+    
+    
+    //MARK: - collectionView
+    
+    func takeValue() {
+        switch type {
+        case 1:
+            menus = Menu.fetchMenu1()
+        case 2:
+            menus = Menu.fetchMenu2()
+        case 3:
+            menus = Menu.fetchMenu3()
+        case 4:
+            menus = Menu.fetchMenu4()
+        case 5:
+            menus = Menu.fetchMenu5()
+        case 6:
+            menus = Menu.fetchMenu6()
+        case 7:
+            menus = Menu.fetchMenu7()
+        case 8:
+            menus = Menu.fetchMenu8()
+        case 9:
+            menus = Menu.fetchMenu9()
+        case 10:
+            menus = Menu.fetchMenu10()
+        default:
+            menus = Menu.fetchMenu1()
+        }
+    }
+   
+    // mapbutton
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let nextViewController: MapView = segue.destination as? MapView else {
+            return
+        }
+        nextViewController.type = type
+        nextViewController.mapText = addressLabel.text
+        nextViewController.destination = titleLabel.text
+      
+    }
+
+}
+
+
+extension DetailView: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.numberOfCell
+        return menus.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuCollectionViewCell", for: indexPath) as! MenuCollectionViewCell
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath) as! MenuCollectionViewCell
-        //menucollectionviewcell에서 메소드 setUp으로 cell의 레이블,이미지뷰를 데이터 넘겨오기
-        // ...ㅜㅜㅜㅜ
-
-        
-        
+        let menued = menus[indexPath.item]
+        cell.menu = menued
         
         return cell
     }
-    
-    
-
-    
 }
 
 
